@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Headless WordPress CE Site",
-  description: "Headless WordPress frontend built with Next.js.",
+  metadataBase: new URL("http://localhost:3000"),
+  title: {
+    default: "Headless WordPress Business Site",
+    template: "%s | Headless WordPress Business Site",
+  },
+  description: "Business website frontend built with Next.js and WordPress.",
+  openGraph: {
+    title: "Headless WordPress Business Site",
+    description: "Business website frontend built with Next.js and WordPress.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -27,7 +37,49 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen bg-white text-neutral-900 dark:bg-black dark:text-neutral-100">
+          <header className="border-b border-black/10 dark:border-white/15">
+            <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+              <Link href="/" className="text-sm font-semibold tracking-wide">
+                Headless Business
+              </Link>
+              <nav className="flex items-center gap-5 text-sm">
+                <Link href="/" className="hover:underline underline-offset-4">
+                  Home
+                </Link>
+                <Link
+                  href="/about"
+                  className="hover:underline underline-offset-4"
+                >
+                  About
+                </Link>
+                <Link
+                  href="/services"
+                  className="hover:underline underline-offset-4"
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/contact"
+                  className="hover:underline underline-offset-4"
+                >
+                  Contact
+                </Link>
+              </nav>
+            </div>
+          </header>
+
+          {children}
+
+          <footer className="border-t border-black/10 dark:border-white/15">
+            <div className="mx-auto max-w-5xl px-6 py-6 text-xs text-neutral-600 dark:text-neutral-300">
+              <p>
+                {new Date().getFullYear()} Headless Business Site. Built with
+                Next.js + WordPress.
+              </p>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );

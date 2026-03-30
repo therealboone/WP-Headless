@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getRecentPosts } from "@/lib/wordpress";
 
 export default async function Home() {
@@ -25,17 +24,6 @@ export default async function Home() {
           This starter is set up for a business website. Core pages come from
           WordPress, while Next.js handles the frontend experience.
         </p>
-        <nav className="flex flex-wrap gap-4 text-sm font-medium">
-          <Link href="/about" className="underline underline-offset-4">
-            About
-          </Link>
-          <Link href="/services" className="underline underline-offset-4">
-            Services
-          </Link>
-          <Link href="/contact" className="underline underline-offset-4">
-            Contact
-          </Link>
-        </nav>
       </section>
 
       <section className="space-y-5">
@@ -59,14 +47,14 @@ export default async function Home() {
                 className="mb-3 text-sm text-neutral-600 dark:text-neutral-300"
                 dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
               />
-              <Link
+              <a
                 className="text-sm font-medium underline underline-offset-4"
                 href={post.link}
                 target="_blank"
                 rel="noreferrer"
               >
                 Read on WordPress
-              </Link>
+              </a>
             </article>
           ))}
         </div>
