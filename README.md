@@ -53,6 +53,7 @@ For backend setup and first-time full-stack run:
 
 - `docs/wordpress-setup.md`
 - `docs/first-run-checklist.md`
+- `CONTRIBUTING.md` (branch and PR protocol)
 
 ## WordPress plugin included
 No custom plugin is required for the base business-site setup. The frontend uses core WordPress REST endpoints (`pages` and `posts`).
