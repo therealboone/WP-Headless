@@ -1,0 +1,13 @@
+@use "../../styles/mixins" as m;
+
+.main {
+  @include m.page-shell();
+}
+
+.title {
+  @include m.page-title();
+}
+
+.content {
+  @include m.rich-content();
+}

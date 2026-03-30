@@ -1,0 +1,30 @@
+@use "variables" as v;
+
+@mixin page-shell($max-width: 48rem) {
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: $max-width;
+  padding: v.$space-12 v.$space-6;
+}
+
+@mixin page-title {
+  margin-bottom: v.$space-4;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@mixin rich-content {
+  color: rgb(64 64 64);
+  line-height: 1.7;
+
+  @media (prefers-color-scheme: dark) {
+    color: v.$color-text-muted-dark;
+  }
+}
+
+@mixin respond-md {
+  @media (min-width: v.$bp-md) {
+    @content;
+  }
+}

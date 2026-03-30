@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getPageBySlug } from "@/lib/wordpress";
+import styles from "./contact.module.scss";
 
 export const metadata = {
   title: "Contact | Headless WordPress Site",
@@ -13,13 +14,13 @@ export default async function ContactPage() {
   }
 
   return (
-    <main className="mx-auto min-h-screen max-w-3xl px-6 py-12">
+    <main className={styles.main}>
       <h1
-        className="mb-4 text-4xl font-semibold"
+        className={styles.title}
         dangerouslySetInnerHTML={{ __html: page.title.rendered }}
       />
       <div
-        className="prose prose-neutral max-w-none dark:prose-invert"
+        className={`${styles.content} wp-content`}
         dangerouslySetInnerHTML={{ __html: page.content.rendered }}
       />
     </main>
