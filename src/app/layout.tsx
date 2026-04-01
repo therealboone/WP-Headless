@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import "./globals.scss";
 
@@ -40,8 +41,18 @@ export default function RootLayout({
         <div className="min-h-screen bg-white text-neutral-900 dark:bg-black dark:text-neutral-100">
           <header className="border-b border-black/10 dark:border-white/15">
             <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-              <Link href="/" className="text-sm font-semibold tracking-wide">
-                Headless Business
+              <Link
+                href="/"
+                className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-black"
+              >
+                <Image
+                  src="/images/ownit-logo.svg"
+                  alt="Own It"
+                  width={160}
+                  height={48}
+                  className="h-9 w-auto"
+                  priority
+                />
               </Link>
               <nav className="flex items-center gap-5 text-sm">
                 <Link href="/" className="hover:underline underline-offset-4">
