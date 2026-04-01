@@ -31,6 +31,16 @@ npm run dev
 
 5. Open [http://localhost:3000](http://localhost:3000).
 
+## Workflow: local development, GitHub, and Vercel
+
+This repo on GitHub: [`therealboone/WP-Headless`](https://github.com/therealboone/WP-Headless) (`origin`). You may also have a team remote (e.g. `teamcornett/headlesswordpress`). **Connect Vercel to the same GitHub repository you push deployable code to.**
+
+1. **Local** — Use `.env.local` (gitignored) for WordPress URL and mock flags.
+2. **GitHub** — Push branches; Vercel builds on push when the project is linked to that repo.
+3. **Branches** — **Production** usually tracks `main` (set in Vercel **Settings → Git**). **Preview** deploys for other branches and pull requests.
+4. **Vercel env** — Dashboard **Settings → Environment Variables** only; not `.env.local`. Set Production / Preview / (optional) Development scopes there.
+5. **Optional** — `vercel link` in this folder, then `vercel env pull .env.local` to sync dashboard vars locally.
+
 ## WordPress requirements
 
 - Ensure your WordPress site is reachable from local development.
@@ -86,6 +96,11 @@ git pull
 
 ## Deploying to Vercel
 
-1. Import this repository into Vercel.
-2. Add `NEXT_PUBLIC_WORDPRESS_URL` in Vercel Project Settings -> Environment Variables.
-3. Deploy (preview and production environments can use different WordPress URLs if needed).
+1. [Vercel](https://vercel.com) → **Add New… → Project** → import the **GitHub** repo you use for this app (or **Settings → Git** on an existing project).
+2. **Settings → Environment Variables** — add for **Production**, **Preview**, and optionally **Development**:
+   - **`NEXT_PUBLIC_WORDPRESS_URL`** — WordPress site base URL (no `/wp-json`; the app adds that path). Use staging for Preview and production WP for Production when you split them.
+   - **`NEXT_PUBLIC_USE_MOCK_WP`** — `false` for real API (typical on Vercel); `true` only for mock data.
+3. **Settings → Git** — production branch (usually `main`).
+4. Push to GitHub to deploy. After changing env vars, trigger a new deployment so builds pick them up.
+
+Until you have a separate production WordPress host, the same `NEXT_PUBLIC_WORDPRESS_URL` for Preview and Production is fine.
