@@ -68,6 +68,22 @@ docker compose -f docker-compose.wordpress.yml up -d
 
 Then open WordPress at [http://localhost:8080](http://localhost:8080).
 
+## Best Git Protocol (PR Workflow)
+
+1. Create a feature branch from `main` (example: `feat/scss-architecture`).
+2. Commit focused changes with clear commit messages.
+3. Push branch to GitHub and open a pull request into `main`.
+4. Verify PR includes summary, why, and test plan (see PR template).
+5. Review files changed and confirm checks pass.
+6. Merge PR into `main` when approved.
+7. Delete the feature branch after merge.
+8. Sync local before new work:
+
+```bash
+git checkout main
+git pull
+```
+
 ## Deploying to Vercel
 
 1. Import this repository into Vercel.

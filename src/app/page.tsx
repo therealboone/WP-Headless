@@ -1,4 +1,5 @@
 import { getRecentPosts } from "@/lib/wordpress";
+import styles from "./home.module.scss";
 
 export default async function Home() {
   let posts: Awaited<ReturnType<typeof getRecentPosts>> = [];
@@ -12,43 +13,34 @@ export default async function Home() {
   }
 
   return (
-    <main className="mx-auto min-h-screen max-w-4xl px-6 py-12">
-      <section className="mb-12 space-y-4">
-        <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">
-          Continuing Education
-        </p>
-        <h1 className="text-4xl font-semibold md:text-5xl">
-          Headless WordPress + Next.js
-        </h1>
-        <p className="max-w-2xl text-neutral-600 dark:text-neutral-300">
+    <main className={styles.main}>
+      <section className={styles.hero}>
+        <p className={styles.eyebrow}>Continuing Education</p>
+        <h1 className={styles.title}>Headless WordPress + Next.js</h1>
+        <p className={styles.description}>
           This starter is set up for a business website. Core pages come from
           WordPress, while Next.js handles the frontend experience.
         </p>
       </section>
 
-      <section className="space-y-5">
-        <h2 className="text-2xl font-medium">Latest posts</h2>
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Latest posts</h2>
         {errorMessage ? (
-          <p className="rounded-md border border-amber-500/40 bg-amber-50 p-4 text-sm text-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
-            {errorMessage}
-          </p>
+          <p className={styles.error}>{errorMessage}</p>
         ) : null}
-        <div className="grid gap-4">
+        <div className={styles.grid}>
           {posts.map((post) => (
-            <article
-              key={post.id}
-              className="rounded-lg border border-black/10 p-5 dark:border-white/15"
-            >
+            <article key={post.id} className={styles.card}>
               <h3
-                className="mb-2 text-lg font-medium"
+                className={styles.cardTitle}
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               />
               <div
-                className="mb-3 text-sm text-neutral-600 dark:text-neutral-300"
+                className={styles.excerpt}
                 dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
               />
               <a
-                className="text-sm font-medium underline underline-offset-4"
+                className={styles.link}
                 href={post.link}
                 target="_blank"
                 rel="noreferrer"
