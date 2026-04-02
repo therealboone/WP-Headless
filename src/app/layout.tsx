@@ -38,12 +38,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen bg-white text-neutral-900 dark:bg-black dark:text-neutral-100">
-          <header className="border-b border-black/10 dark:border-white/15">
+        <div className="min-h-screen bg-white text-neutral-900">
+          <header className="border-b border-black/10">
             <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
               <Link
                 href="/"
-                className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-black"
+                className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2"
               >
                 <Image
                   src="/images/ownit-logo.svg"
@@ -82,8 +82,8 @@ export default function RootLayout({
 
           {children}
 
-          <footer className="border-t border-black/10 dark:border-white/15">
-            <div className="mx-auto max-w-5xl px-6 py-6 text-xs text-neutral-600 dark:text-neutral-300">
+          <footer className="border-t border-black/10">
+            <div className="mx-auto max-w-5xl px-6 py-6 text-xs text-neutral-600">
               <p>
                 {new Date().getFullYear()} Headless Business Site. Built with
                 Next.js + WordPress.
