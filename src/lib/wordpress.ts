@@ -77,9 +77,7 @@ export async function getRecentPosts(limit = 6): Promise<WordPressPost[]> {
   );
 }
 
-export async function getPageBySlug(
-  slug: "about" | "services" | "contact",
-): Promise<WordPressPage | null> {
+export async function getPageBySlug(slug: string): Promise<WordPressPage | null> {
   if (useMockWordPress || !wordpressUrl) {
     return getMockPages().find((page) => page.slug === slug) ?? null;
   }
